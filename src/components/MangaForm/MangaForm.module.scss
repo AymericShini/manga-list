@@ -1,0 +1,198 @@
+@use "../../styles/variables.scss" as *;
+
+.manga-form {
+  background: var(--mt-bg-card);
+  border: 1px solid var(--mt-border);
+  border-radius: $radius-lg;
+  padding: $space-6;
+  margin: $space-6 $space-6 0;
+  box-shadow: var(--mt-shadow-md);
+  animation: slideDown $transition-base forwards;
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    color: var(--mt-text-primary);
+    margin-bottom: $space-5;
+    letter-spacing: 0.05em;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 3px;
+      background: var(--mt-accent);
+      margin-top: $space-2;
+      border-radius: $radius-full;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-4;
+    margin-bottom: $space-5;
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+
+    &--row {
+      flex-direction: row;
+      align-items: center;
+      gap: $space-5;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: var(--mt-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__input {
+    height: 40px;
+    padding: 0 $space-4;
+    background: var(--mt-bg-elevated);
+    border: 1px solid var(--mt-border);
+    border-radius: $radius-md;
+    color: var(--mt-text-primary);
+    transition:
+      border-color $transition-fast,
+      box-shadow $transition-fast;
+
+    &::placeholder {
+      color: var(--mt-text-muted);
+    }
+
+    &:focus {
+      border-color: var(--mt-border-focus);
+      box-shadow: 0 0 0 3px var(--mt-accent-subtle);
+    }
+
+    &--error {
+      border-color: var(--mt-accent);
+    }
+  }
+
+  &__error {
+    font-size: $font-size-xs;
+    color: var(--mt-accent);
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-sm;
+    color: var(--mt-text-secondary);
+    cursor: pointer;
+    user-select: none;
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--mt-accent);
+      cursor: pointer;
+    }
+
+    &:hover {
+      color: var(--mt-text-primary);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-3;
+    padding-top: $space-4;
+    border-top: 1px solid var(--mt-border);
+  }
+
+  &__btn-cancel,
+  &__btn-submit {
+    height: 40px;
+    padding: 0 $space-6;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    font-family: $font-body;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      border-color $transition-fast;
+  }
+
+  &__btn-cancel {
+    background: transparent;
+    border: 1px solid var(--mt-border);
+    color: var(--mt-text-secondary);
+
+    &:hover {
+      background: var(--mt-bg-hover);
+      color: var(--mt-text-primary);
+    }
+  }
+
+  &__btn-submit {
+    background: var(--mt-accent);
+    border: 1px solid var(--mt-accent);
+    color: #ffffff;
+
+    &:hover {
+      background: var(--mt-accent-hover);
+      border-color: var(--mt-accent-hover);
+    }
+  }
+
+  &__open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    height: 42px;
+    padding: 0 $space-5;
+    background: var(--mt-accent);
+    color: #ffffff;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    font-family: $font-body;
+    transition:
+      background $transition-fast,
+      transform $transition-fast;
+
+    span {
+      font-size: $font-size-xl;
+      line-height: 1;
+      font-weight: 300;
+    }
+
+    &:hover {
+      background: var(--mt-accent-hover);
+      transform: translateY(-1px);
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use "../../styles/variables.scss" as *;
+
+.star-rating {
+  display: inline-flex;
+  gap: $space-1;
+  align-items: center;
+
+  &--sm {
+    .star-rating__star {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--md {
+    .star-rating__star {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &--readonly {
+    .star-rating__star {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &__star {
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    transition:
+      transform $transition-fast,
+      color $transition-fast;
+    cursor: pointer;
+
+    &--filled {
+      color: var(--mt-star-filled);
+    }
+
+    &--empty {
+      color: var(--mt-star-empty);
+    }
+
+    &:not(:disabled):hover {
+      transform: scale(1.2);
+      color: var(--mt-star-filled);
+    }
+  }
+}

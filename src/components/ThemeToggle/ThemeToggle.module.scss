@@ -1,0 +1,28 @@
+@use "../../styles/variables.scss" as *;
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: var(--mt-bg-elevated);
+  border: 1px solid var(--mt-border);
+  transition:
+    background $transition-fast,
+    border-color $transition-fast,
+    transform $transition-fast;
+
+  &:hover {
+    background: var(--mt-bg-hover);
+    border-color: var(--mt-accent);
+    transform: scale(1.05);
+  }
+
+  &__icon {
+    font-size: $font-size-lg;
+    line-height: 1;
+    display: block;
+  }
+}

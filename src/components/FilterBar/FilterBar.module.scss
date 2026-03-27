@@ -1,0 +1,189 @@
+@use "../../styles/variables.scss" as *;
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-3;
+  padding: $space-4 $space-6;
+  background: var(--mt-bg-secondary);
+  border-bottom: 1px solid var(--mt-border);
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  // ── Search ──────────────────────────────────────────────────
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: $space-3;
+    font-size: $font-size-sm;
+    pointer-events: none;
+    color: var(--mt-text-muted);
+  }
+
+  &__search-input {
+    height: 38px;
+    padding: 0 $space-8 0 $space-8;
+    background: var(--mt-bg-card);
+    border: 1px solid var(--mt-border);
+    border-radius: $radius-md;
+    color: var(--mt-text-primary);
+    width: 220px;
+    transition:
+      border-color $transition-fast,
+      box-shadow $transition-fast;
+
+    &::placeholder {
+      color: var(--mt-text-muted);
+    }
+
+    &:focus {
+      border-color: var(--mt-border-focus);
+      box-shadow: 0 0 0 3px var(--mt-accent-subtle);
+    }
+  }
+
+  &__search-clear {
+    position: absolute;
+    right: $space-3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: $radius-full;
+    color: var(--mt-text-muted);
+    font-size: $font-size-xs;
+    transition:
+      color $transition-fast,
+      background $transition-fast;
+
+    &:hover {
+      color: var(--mt-text-primary);
+      background: var(--mt-bg-hover);
+    }
+  }
+
+  // ── Toggle favori ────────────────────────────────────────────
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    height: 38px;
+    padding: 0 $space-4;
+    border-radius: $radius-md;
+    border: 1px solid var(--mt-border);
+    background: var(--mt-bg-card);
+    color: var(--mt-text-secondary);
+    font-size: $font-size-sm;
+    font-family: $font-body;
+    font-weight: 500;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      border-color $transition-fast;
+
+    &:hover {
+      border-color: var(--mt-favorite);
+      color: var(--mt-favorite);
+    }
+
+    &--active {
+      background: var(--mt-favorite-subtle);
+      border-color: var(--mt-favorite);
+      color: var(--mt-favorite);
+    }
+  }
+
+  // ── Count ────────────────────────────────────────────────────
+  &__count {
+    font-size: $font-size-sm;
+    color: var(--mt-text-muted);
+    white-space: nowrap;
+  }
+
+  // ── Sort ─────────────────────────────────────────────────────
+  &__sort {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--mt-border);
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+
+  &__sort-select {
+    height: 38px;
+    padding: 0 $space-3;
+    background: var(--mt-bg-card);
+    border: none;
+    color: var(--mt-text-primary);
+    font-size: $font-size-sm;
+    cursor: pointer;
+    appearance: none;
+
+    option {
+      background: var(--mt-bg-card);
+    }
+  }
+
+  &__sort-dir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: var(--mt-bg-elevated);
+    color: var(--mt-text-secondary);
+    font-size: $font-size-base;
+    transition:
+      background $transition-fast,
+      color $transition-fast;
+
+    &:hover {
+      background: var(--mt-bg-hover);
+      color: var(--mt-accent);
+    }
+  }
+
+  // ── Buttons ──────────────────────────────────────────────────
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    height: 38px;
+    padding: 0 $space-4;
+    border-radius: $radius-md;
+    border: 1px solid var(--mt-border);
+    background: var(--mt-bg-card);
+    color: var(--mt-text-secondary);
+    font-size: $font-size-sm;
+    font-family: $font-body;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      border-color $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: var(--mt-bg-hover);
+      color: var(--mt-text-primary);
+      border-color: var(--mt-accent);
+    }
+  }
+
+  &__file-input {
+    display: none;
+  }
+}

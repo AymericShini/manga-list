@@ -1,0 +1,237 @@
+@use "../../styles/variables.scss" as *;
+
+.manga-row {
+  border-bottom: 1px solid var(--mt-border);
+  transition: background $transition-fast;
+  text-align: left;
+
+  &:hover {
+    background: var(--mt-bg-hover);
+  }
+
+  &--hiatus {
+    opacity: 0.65;
+  }
+
+  &--editing {
+    background: var(--mt-accent-subtle);
+
+    &:hover {
+      background: var(--mt-accent-subtle);
+    }
+  }
+
+  // ── Cells ────────────────────────────────────────────────────
+  &__cell {
+    padding: $space-3 $space-4;
+    vertical-align: middle;
+    font-size: $font-size-sm;
+    color: var(--mt-text-primary);
+
+    &--actions {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      justify-content: flex-end;
+      white-space: nowrap;
+    }
+  }
+
+  // ── Name ─────────────────────────────────────────────────────
+  &__name {
+    font-weight: 500;
+    color: var(--mt-text-primary);
+  }
+
+  // ── Chapter ──────────────────────────────────────────────────
+  &__chapter {
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    color: var(--mt-text-secondary);
+    background: var(--mt-bg-elevated);
+    padding: $space-1 $space-2;
+    border-radius: $radius-sm;
+    white-space: nowrap;
+  }
+
+  // ── Link ─────────────────────────────────────────────────────
+  &__link {
+    color: var(--mt-accent);
+    font-weight: 500;
+    font-size: $font-size-sm;
+    white-space: nowrap;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: var(--mt-accent-hover);
+      text-decoration: none;
+    }
+  }
+
+  &__empty {
+    color: var(--mt-text-muted);
+  }
+
+  // ── Icon buttons (favori / hiatus) ───────────────────────────
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-md;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      transform $transition-fast;
+
+    &--favorite {
+      color: var(--mt-star-empty);
+
+      &:hover {
+        color: var(--mt-favorite);
+        background: var(--mt-favorite-subtle);
+        transform: scale(1.15);
+      }
+    }
+
+    &--favorite-active {
+      color: var(--mt-favorite);
+      background: var(--mt-favorite-subtle);
+    }
+
+    &--hiatus {
+      color: var(--mt-text-muted);
+
+      &:hover {
+        color: var(--mt-hiatus);
+        background: var(--mt-hiatus-subtle);
+        transform: scale(1.15);
+      }
+    }
+
+    &--hiatus-active {
+      color: var(--mt-hiatus);
+      background: var(--mt-hiatus-subtle);
+    }
+  }
+
+  // ── Action buttons (edit / delete / save / cancel) ───────────
+  &__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: $radius-sm;
+    font-size: $font-size-sm;
+    opacity: 0;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      opacity $transition-fast;
+
+    .manga-row:hover &,
+    .manga-row--editing & {
+      opacity: 1;
+    }
+
+    &--edit {
+      color: var(--mt-text-secondary);
+
+      &:hover {
+        background: var(--mt-bg-hover);
+        color: var(--mt-text-primary);
+      }
+    }
+
+    &--delete {
+      color: var(--mt-text-muted);
+
+      &:hover {
+        background: var(--mt-accent-subtle);
+        color: var(--mt-accent);
+      }
+    }
+
+    &--save {
+      color: var(--mt-green, #2a9d8f);
+      opacity: 1;
+
+      &:hover {
+        background: rgba(42, 157, 143, 0.12);
+      }
+    }
+
+    &--cancel {
+      color: var(--mt-text-muted);
+      opacity: 1;
+
+      &:hover {
+        background: var(--mt-accent-subtle);
+        color: var(--mt-accent);
+      }
+    }
+  }
+
+  // ── Edit inputs ──────────────────────────────────────────────
+  &__edit-input {
+    width: 100%;
+    height: 34px;
+    padding: 0 $space-3;
+    background: var(--mt-bg-card);
+    border: 1px solid var(--mt-border-focus);
+    border-radius: $radius-sm;
+    color: var(--mt-text-primary);
+    font-size: $font-size-sm;
+    font-family: $font-body;
+    transition: box-shadow $transition-fast;
+
+    &:focus {
+      box-shadow: 0 0 0 3px var(--mt-accent-subtle);
+    }
+
+    &--sm {
+      width: 80px;
+    }
+  }
+
+  // ── Chapter group (+1) ───────────────────────────────────────
+  &__chapter-group {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__increment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    padding: 0 $space-2;
+    background: var(--mt-accent-subtle);
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    color: var(--mt-accent);
+    font-size: $font-size-xs;
+    font-weight: 700;
+    font-family: $font-mono;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transition:
+      background $transition-fast,
+      border-color $transition-fast,
+      opacity $transition-fast,
+      transform $transition-fast;
+
+    .manga-row:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      background: var(--mt-accent);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+  }
+}

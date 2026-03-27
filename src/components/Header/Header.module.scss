@@ -1,0 +1,57 @@
+@use "../../styles/variables.scss" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-4 $space-6;
+  background: var(--mt-bg-secondary);
+  border-bottom: 1px solid var(--mt-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__logo {
+    font-size: $font-size-3xl;
+    line-height: 1;
+    color: var(--mt-accent);
+    font-weight: 700;
+    text-shadow: 0 0 20px var(--mt-accent-subtle);
+    user-select: none;
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-2xl;
+    color: var(--mt-text-primary);
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  &__subtitle {
+    font-size: $font-size-xs;
+    color: var(--mt-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 2px;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+}

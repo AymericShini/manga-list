@@ -1,0 +1,128 @@
+// ============================================================
+// VARIABLES — MangaTracker
+// Thème via attribut data-theme sur <html>
+// Convention : var(--mt-*) pour éviter les collisions
+// ============================================================
+
+// ── Typographie ──────────────────────────────────────────────
+$font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+$font-body: "DM Sans", "Helvetica Neue", sans-serif;
+$font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.5rem; // 24px
+$font-size-2xl: 2rem; // 32px
+$font-size-3xl: 3rem; // 48px
+
+// ── Espacement ───────────────────────────────────────────────
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+
+// ── Breakpoints ──────────────────────────────────────────────
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// ── Radius ───────────────────────────────────────────────────
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-full: 9999px;
+
+// ── Transitions ──────────────────────────────────────────────
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 400ms ease;
+
+// ── Couleurs statiques (accent) ──────────────────────────────
+$color-red: #e63946;
+$color-red-hover: #c1121f;
+$color-gold: #f4a261;
+$color-green: #2a9d8f;
+$color-blue: #4361ee;
+
+// ── CSS Custom Properties (theme switching) ──────────────────
+:root,
+[data-theme="dark"] {
+  --mt-bg-primary: #0d0d0f;
+  --mt-bg-secondary: #161618;
+  --mt-bg-card: #1c1c1f;
+  --mt-bg-elevated: #242428;
+  --mt-bg-hover: #2a2a2e;
+
+  --mt-text-primary: #f0f0ee;
+  --mt-text-secondary: #9a9a9e;
+  --mt-text-muted: #5a5a60;
+  --mt-text-inverse: #0d0d0f;
+
+  --mt-border: #2e2e34;
+  --mt-border-focus: #e63946;
+
+  --mt-accent: #e63946;
+  --mt-accent-hover: #c1121f;
+  --mt-accent-subtle: rgba(230, 57, 70, 0.12);
+
+  --mt-hiatus: #f4a261;
+  --mt-hiatus-subtle: rgba(244, 162, 97, 0.12);
+
+  --mt-favorite: #f4c430;
+  --mt-favorite-subtle: rgba(244, 196, 48, 0.12);
+
+  --mt-star-empty: #3a3a3f;
+  --mt-star-filled: #f4c430;
+
+  --mt-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --mt-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --mt-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.8);
+
+  --mt-scrollbar-thumb: #3a3a3f;
+  --mt-scrollbar-track: #161618;
+}
+
+[data-theme="light"] {
+  --mt-bg-primary: #f5f4f0;
+  --mt-bg-secondary: #eceae4;
+  --mt-bg-card: #ffffff;
+  --mt-bg-elevated: #f8f7f3;
+  --mt-bg-hover: #eeece6;
+
+  --mt-text-primary: #111111;
+  --mt-text-secondary: #555555;
+  --mt-text-muted: #999999;
+  --mt-text-inverse: #f5f4f0;
+
+  --mt-border: #dddbd4;
+  --mt-border-focus: #e63946;
+
+  --mt-accent: #e63946;
+  --mt-accent-hover: #c1121f;
+  --mt-accent-subtle: rgba(230, 57, 70, 0.08);
+
+  --mt-hiatus: #d4731a;
+  --mt-hiatus-subtle: rgba(212, 115, 26, 0.08);
+
+  --mt-favorite: #d4a000;
+  --mt-favorite-subtle: rgba(212, 160, 0, 0.1);
+
+  --mt-star-empty: #cccccc;
+  --mt-star-filled: #d4a000;
+
+  --mt-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --mt-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --mt-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+
+  --mt-scrollbar-thumb: #cccccc;
+  --mt-scrollbar-track: #eceae4;
+}

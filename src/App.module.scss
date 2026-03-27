@@ -1,0 +1,22 @@
+@use "./styles/variables.scss" as *;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--mt-bg-primary);
+
+  &__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__add-section {
+    padding: $space-6 $space-6;
+
+    @media (max-width: $bp-sm) {
+      padding: 0 $space-4 $space-4;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use "../../styles/variables.scss" as *;
+
+.view-toggle {
+  display: flex;
+  border: 1px solid var(--mt-border);
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--mt-bg-elevated);
+    border: none;
+    color: var(--mt-text-secondary);
+    transition:
+      background $transition-fast,
+      color $transition-fast;
+
+    &:hover:not(&--active) {
+      background: var(--mt-bg-hover);
+      color: var(--mt-text-primary);
+    }
+
+    &--active {
+      background: var(--mt-accent);
+      color: #ffffff;
+    }
+
+    & + & {
+      border-left: 1px solid var(--mt-border);
+    }
+  }
+
+  &__icon {
+    font-size: $font-size-lg;
+    line-height: 1;
+  }
+}

@@ -1,0 +1,381 @@
+@use "../../styles/variables.scss" as *;
+
+.manga-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-5;
+  background: var(--mt-bg-card);
+  border: 1px solid var(--mt-border);
+  border-radius: $radius-lg;
+  box-shadow: var(--mt-shadow-sm);
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base,
+    border-color $transition-base;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--mt-border);
+    transition: background $transition-base;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mt-shadow-md);
+    border-color: var(--mt-accent);
+
+    &::before {
+      background: var(--mt-accent);
+    }
+  }
+
+  &--favorite {
+    &::before {
+      background: var(--mt-favorite);
+    }
+  }
+
+  &--hiatus {
+    opacity: 0.7;
+  }
+
+  &--editing {
+    border-color: var(--mt-accent);
+    box-shadow:
+      0 0 0 3px var(--mt-accent-subtle),
+      var(--mt-shadow-md);
+
+    &::before {
+      background: var(--mt-accent);
+    }
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  // ── Badges ───────────────────────────────────────────────────
+  &__badges {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    display: flex;
+    gap: $space-1;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px $space-2;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    line-height: 1.4;
+
+    &--favorite {
+      background: var(--mt-favorite-subtle);
+      color: var(--mt-favorite);
+    }
+
+    &--hiatus {
+      background: var(--mt-hiatus-subtle);
+      color: var(--mt-hiatus);
+      font-family: $font-body;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  }
+
+  // ── Header ───────────────────────────────────────────────────
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding-right: $space-8;
+    min-height: 48px;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    color: var(--mt-text-primary);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  &__chapter {
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    color: var(--mt-text-secondary);
+    background: var(--mt-bg-elevated);
+    display: inline-block;
+    padding: 2px $space-2;
+    border-radius: $radius-sm;
+    align-self: flex-start;
+  }
+
+  // ── Rating ───────────────────────────────────────────────────
+  &__rating {
+    min-height: 22px;
+  }
+
+  // ── Footer ───────────────────────────────────────────────────
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $space-3;
+    border-top: 1px solid var(--mt-border);
+    margin-top: auto;
+  }
+
+  &__quick-actions,
+  &__main-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  // ── Icon buttons ─────────────────────────────────────────────
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      transform $transition-fast;
+
+    &--favorite {
+      color: var(--mt-star-empty);
+
+      &:hover {
+        color: var(--mt-favorite);
+        background: var(--mt-favorite-subtle);
+        transform: scale(1.15);
+      }
+    }
+
+    &--favorite-active {
+      color: var(--mt-favorite);
+      background: var(--mt-favorite-subtle);
+    }
+
+    &--hiatus {
+      color: var(--mt-text-muted);
+
+      &:hover {
+        color: var(--mt-hiatus);
+        background: var(--mt-hiatus-subtle);
+        transform: scale(1.15);
+      }
+    }
+
+    &--hiatus-active {
+      color: var(--mt-hiatus);
+      background: var(--mt-hiatus-subtle);
+    }
+  }
+
+  // ── Action buttons ───────────────────────────────────────────
+  &__read-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 $space-3;
+    background: var(--mt-accent);
+    color: #ffffff;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: var(--mt-accent-hover);
+      text-decoration: none;
+    }
+  }
+
+  &__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-sm;
+    font-size: $font-size-sm;
+    transition:
+      background $transition-fast,
+      color $transition-fast;
+
+    &--edit {
+      color: var(--mt-text-muted);
+
+      &:hover {
+        background: var(--mt-bg-hover);
+        color: var(--mt-text-primary);
+      }
+    }
+
+    &--delete {
+      color: var(--mt-text-muted);
+
+      &:hover {
+        background: var(--mt-accent-subtle);
+        color: var(--mt-accent);
+      }
+    }
+  }
+
+  // ── Edit mode ────────────────────────────────────────────────
+  &__edit-body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__edit-row {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__edit-label {
+    font-size: $font-size-xs;
+    color: var(--mt-text-muted);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__edit-input {
+    width: 85%;
+    height: 36px;
+    padding: 0 $space-3;
+    background: var(--mt-bg-elevated);
+    border: 1px solid var(--mt-border-focus);
+    border-radius: $radius-sm;
+    color: var(--mt-text-primary);
+    font-size: $font-size-sm;
+    font-family: $font-body;
+
+    &:focus {
+      box-shadow: 0 0 0 3px var(--mt-accent-subtle);
+    }
+
+    &--sm {
+      width: 80px;
+    }
+  }
+
+  &__edit-checks {
+    display: flex;
+    gap: $space-4;
+  }
+
+  &__check-label {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-sm;
+    color: var(--mt-text-secondary);
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--mt-accent);
+    }
+  }
+
+  &__edit-actions {
+    display: flex;
+    gap: $space-2;
+    justify-content: flex-end;
+    padding-top: $space-3;
+    border-top: 1px solid var(--mt-border);
+  }
+
+  &__btn {
+    height: 32px;
+    padding: 0 $space-4;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    font-family: $font-body;
+    transition: background $transition-fast;
+
+    &--cancel {
+      background: transparent;
+      border: 1px solid var(--mt-border);
+      color: var(--mt-text-secondary);
+
+      &:hover {
+        background: var(--mt-bg-hover);
+      }
+    }
+
+    &--save {
+      background: var(--mt-accent);
+      border: 1px solid var(--mt-accent);
+      color: #ffffff;
+
+      &:hover {
+        background: var(--mt-accent-hover);
+      }
+    }
+  }
+
+  // ── Chapter group (+1) ───────────────────────────────────────
+  &__chapter-group {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-1;
+  }
+
+  &__increment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 0 $space-2;
+    background: var(--mt-accent-subtle);
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    color: var(--mt-accent);
+    font-size: $font-size-xs;
+    font-weight: 700;
+    font-family: $font-mono;
+    opacity: 0;
+    transition:
+      background $transition-fast,
+      color $transition-fast,
+      opacity $transition-fast,
+      transform $transition-fast;
+
+    .manga-card:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      background: var(--mt-accent);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@use "../../styles/variables.scss" as *;
+
+.manga-list {
+  // ── Table wrapper ────────────────────────────────────────────
+  &__table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+  }
+
+  &__header-row {
+    background: var(--mt-bg-secondary);
+    border-bottom: 2px solid var(--mt-border);
+  }
+
+  &__th {
+    padding: $space-3 $space-4;
+    text-align: left;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: var(--mt-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  // ── Grid ─────────────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: $space-4;
+    padding: $space-6;
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+      padding: $space-4;
+    }
+  }
+
+  // ── Empty state ──────────────────────────────────────────────
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $space-16 $space-8;
+    text-align: center;
+    gap: $space-3;
+  }
+
+  &__empty-icon {
+    font-size: 3rem;
+    opacity: 0.4;
+  }
+
+  &__empty-title {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    color: var(--mt-text-secondary);
+    letter-spacing: 0.04em;
+  }
+
+  &__empty-sub {
+    font-size: $font-size-sm;
+    color: var(--mt-text-muted);
+    max-width: 320px;
+    line-height: 1.6;
+  }
+}
