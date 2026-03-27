@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: manga-frontend
+    container_name: manga-frontend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
